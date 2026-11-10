@@ -16,10 +16,20 @@ from pathlib import Path
 import pandas as pd
 
 import taller1
-from taller1 import data, features, modeling, reporting
+from taller1 import data, eda, features, modeling, reporting
 from taller1.config import (
     CLASS_PLOT_FILE,
     DEMO_PREDICTION_FILE,
+    EDA_BOXPLOTS_FILE,
+    EDA_CLASS_PROFILES_FILE,
+    EDA_CORRELATION_PLOT_FILE,
+    EDA_CORRELATIONS_FILE,
+    EDA_HISTOGRAMS_FILE,
+    EDA_OUTLIERS_FILE,
+    EDA_PROFILE_FILE,
+    EDA_PROFILES_PLOT_FILE,
+    EDA_SEPARABILITY_FILE,
+    EDA_SEPARABILITY_PLOT_FILE,
     FINAL_MODEL_FILE,
     METRICS_FILE,
     PHASE_DEPLOY_DIR,
@@ -28,6 +38,7 @@ from taller1.config import (
     PREDICTIONS_FILE,
     RANDOM_STATE,
     SUMMARY_FILE,
+    TARGET_COLUMN,
     TEST_SIZE,
     ensure_directories,
 )
@@ -61,12 +72,53 @@ def run_pipeline(verbose: bool = True) -> dict[str, object]:
         "test_size": TEST_SIZE,
         "random_state": RANDOM_STATE,
     }
+
+    # 3b. Análisis exploratorio (evidencia de la fase 02) --------------------
+    feature_columns = [column for column in clean.columns if column != TARGET_COLUMN]
+    profile = eda.numeric_profile(clean, feature_columns)
+    outliers = eda.outlier_report(clean, feature_columns)
+    correlation = eda.correlation_matrix(clean, feature_columns)
+    top_pairs = eda.top_correlations(correlation, 10)
+    class_profile = eda.class_profiles(clean, TARGET_COLUMN, feature_columns)
+    separation = eda.class_separation(clean, TARGET_COLUMN, feature_columns)
+
+    eda.save_tables(
+        profile,
+        outliers,
+        top_pairs,
+        separation,
+        {
+            "profile": EDA_PROFILE_FILE,
+            "outliers": EDA_OUTLIERS_FILE,
+            "correlations": EDA_CORRELATIONS_FILE,
+            "separation": EDA_SEPARABILITY_FILE,
+        },
+    )
+    eda.plot_feature_histograms(clean, feature_columns, EDA_HISTOGRAMS_FILE)
+    eda.plot_boxplots_by_class(clean, TARGET_COLUMN, feature_columns, EDA_BOXPLOTS_FILE)
+    eda.plot_correlation_heatmap(correlation, EDA_CORRELATION_PLOT_FILE)
+    eda.plot_class_profiles(class_profile, EDA_PROFILES_PLOT_FILE)
+    eda.plot_separability(separation, EDA_SEPARABILITY_PLOT_FILE)
+    class_profile.to_csv(EDA_CLASS_PROFILES_FILE)
+
     data.save_profile(
         {
             "crudo": quality_raw,
             "limpio": quality_clean,
             "duplicados_eliminados": removed,
             "particion": partition,
+            "eda": {
+                "variables_mas_discriminantes": separation.head(5).to_dict(orient="records"),
+                "max_correlacion": float(top_pairs.iloc[0]["correlacion"]),
+                "variable_mas_correlacionada": [
+                    str(top_pairs.iloc[0]["variable_1"]),
+                    str(top_pairs.iloc[0]["variable_2"]),
+                ],
+                "variable_con_mas_atipicos": {
+                    "variable": str(outliers.iloc[0]["variable"]),
+                    "n_atipicos": int(outliers.iloc[0]["n_atipicos"]),
+                },
+            },
         }
     )
 
@@ -120,6 +172,10 @@ def run_pipeline(verbose: bool = True) -> dict[str, object]:
         "calidad_datos": {"crudo": quality_raw, "limpio": quality_clean},
         "duplicados_eliminados": removed,
         "particion": partition,
+        "eda": {
+            "variables_mas_discriminantes": separation.head(3).to_dict(orient="records"),
+            "pares_mas_correlacionados": top_pairs.head(3).to_dict(orient="records"),
+        },
         "metricas": comparison.to_dict(orient="records"),
         "mejor_modelo": str(comparison.iloc[0]["modelo"]),
         "verificacion_despliegue": {

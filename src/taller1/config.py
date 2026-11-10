@@ -51,6 +51,18 @@ TARGET_COLUMN = "Class"
 PROFILE_FILE = PHASE_DATA_DIR / "perfil_datos.json"
 CLASS_PLOT_FILE = PHASE_DATA_DIR / "distribucion_clases.png"
 
+# Análisis exploratorio (fase 2)
+EDA_PROFILE_FILE = PHASE_DATA_DIR / "perfil_numerico.csv"
+EDA_OUTLIERS_FILE = PHASE_DATA_DIR / "valores_atipicos.csv"
+EDA_CORRELATIONS_FILE = PHASE_DATA_DIR / "correlaciones_top.csv"
+EDA_SEPARABILITY_FILE = PHASE_DATA_DIR / "separabilidad_features.csv"
+EDA_CLASS_PROFILES_FILE = PHASE_DATA_DIR / "perfiles_por_clase.csv"
+EDA_HISTOGRAMS_FILE = PHASE_DATA_DIR / "histogramas_variables.png"
+EDA_BOXPLOTS_FILE = PHASE_DATA_DIR / "boxplots_por_clase.png"
+EDA_CORRELATION_PLOT_FILE = PHASE_DATA_DIR / "matriz_correlaciones.png"
+EDA_PROFILES_PLOT_FILE = PHASE_DATA_DIR / "perfiles_por_clase.png"
+EDA_SEPARABILITY_PLOT_FILE = PHASE_DATA_DIR / "separabilidad_por_clase.png"
+
 MANIFEST_FILE = PHASE_PREP_DIR / "data_manifest.json"
 
 BASELINE_MODEL_FILE = PHASE_MODEL_DIR / "logistic_regression_drybean.joblib"

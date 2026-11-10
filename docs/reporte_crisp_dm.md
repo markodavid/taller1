@@ -79,11 +79,43 @@ Las 16 predictoras describen tamaño (`Area`, `Perimeter`, `MajorAxisLength`,
 | BARBUNYA | 1322 | 9.8 % |
 | BOMBAY | 522 | 3.8 % |
 
-![Distribución de clases](../05_evaluacion/distribucion_clases.png)
+![Distribución de clases](../02_comprension_datos/distribucion_clases.png)
 
-**Conclusión de la fase:** el dataset es limpio y consistente, pero **desbalanceado**: la clase
-mayoritaria tiene casi 7 veces más ejemplos que la minoritaria. Esto condiciona la elección de
-métricas y de la estrategia de partición.
+### Análisis exploratorio (EDA)
+
+**1. Perfil numérico y valores atípicos.** Las variables de tamaño tienen asimetría fuerte a la
+derecha (`Area` 2.95, `ConvexArea` 2.94): la cola la produce `BOMBAY`. `Solidity` (CV = 0.005) y
+`ShapeFactor4` (CV = 0.004) son casi constantes. Por la regla IQR hay atípicos en `Eccentricity`
+(833, 6.2 %), `Solidity` (774, 5.7 %) y `Area` (551, 4.1 %), pero son granos reales: se conservan.
+
+**2. Multicolinealidad.** `Area`–`ConvexArea` correlacionan 0.9999; `Compactness`–`ShapeFactor3`,
+0.9987; `Perimeter`–`EquivDiameter`, 0.9915; `AspectRatio`–`Compactness`, −0.9876. Las 16
+variables contienen unas **10 dimensiones independientes**, lo que limita la interpretación
+causal de los coeficientes y obliga a leer la importancia por bloques.
+
+**3. Separabilidad por clase.** Seis variables superan **eta² = 0.90** (`Area` 0.93,
+`ConvexArea` 0.93, `EquivDiameter` 0.92, `Perimeter` 0.92, `MinorAxisLength` 0.91,
+`MajorAxisLength` 0.91); las más débiles son `Extent` (0.16), `Solidity` (0.22) y
+`ShapeFactor4` (0.36). Que las medidas de tamaño separen tanto anticipa que un modelo lineal
+competirá con el bosque aleatorio.
+
+| Variedad | Rasgo dominante | z-score |
+|---|---|---:|
+| `BOMBAY` | Mucho más grande | Area +4.1, ConvexArea +4.1 |
+| `HOROZ` | Alargada y excéntrica | AspectRatio +1.8 |
+| `SEKER` | Redonda y compacta | Roundness +1.2, Compactness +1.6 |
+| `DERMASON` | Compacta y pequeña | ShapeFactor1 +1.1, Area −0.7 |
+| `BARBUNYA` | Contorno poco sólido | Solidity −0.9 |
+| `SIRA` | Perfil promedio | todas entre −0.3 y +0.3 |
+
+![Matriz de correlaciones](../02_comprension_datos/matriz_correlaciones.png)
+
+![Perfiles por clase](../02_comprension_datos/perfiles_por_clase.png)
+
+**Conclusión de la fase:** el dataset es limpio y consistente, pero **desbalanceado** (7:1). El EDA
+además mostró que `SIRA` no tiene ningún rasgo extremo, lo que **anticipó su F1 de 0.87** y su
+confusión con `DERMASON`. Todo el EDA está en
+[`02_comprension_datos/`](../02_comprension_datos/README.md).
 
 ---
 

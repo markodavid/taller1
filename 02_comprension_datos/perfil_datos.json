@@ -45,5 +45,38 @@
     "test": 2709,
     "test_size": 0.2,
     "random_state": 42
+  },
+  "eda": {
+    "variables_mas_discriminantes": [
+      {
+        "variable": "Area",
+        "eta_cuadrado": 0.9279
+      },
+      {
+        "variable": "ConvexArea",
+        "eta_cuadrado": 0.9277
+      },
+      {
+        "variable": "EquivDiameter",
+        "eta_cuadrado": 0.9187
+      },
+      {
+        "variable": "Perimeter",
+        "eta_cuadrado": 0.9151
+      },
+      {
+        "variable": "MinorAxisLength",
+        "eta_cuadrado": 0.9086
+      }
+    ],
+    "max_correlacion": 0.9999396020129335,
+    "variable_mas_correlacionada": [
+      "Area",
+      "ConvexArea"
+    ],
+    "variable_con_mas_atipicos": {
+      "variable": "Eccentricity",
+      "n_atipicos": 833
+    }
   }
 }

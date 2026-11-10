@@ -1,0 +1,17 @@
+variable,limite_inferior,limite_superior,n_atipicos,pct_atipicos
+Eccentricity,0.57,0.95,833,6.15
+Solidity,0.98,1.0,774,5.72
+ShapeFactor4,0.99,1.0,760,5.61
+MinorAxisLength,113.85,279.28,567,4.19
+Area,-1366.75,99031.25,551,4.07
+ConvexArea,-1857.5,100890.5,549,4.05
+ShapeFactor1,0.0,0.01,533,3.94
+EquivDiameter,117.99,376.5,526,3.88
+Perimeter,292.36,1388.02,500,3.69
+AspectRatio,1.02,2.11,485,3.58
+MajorAxisLength,68.25,561.15,379,2.8
+Extent,0.62,0.89,271,2.0
+ShapeFactor3,0.41,0.87,202,1.49
+Compactness,0.66,0.94,124,0.92
+Roundness,0.71,1.04,98,0.72
+ShapeFactor2,-0.0,0.0,0,0.0

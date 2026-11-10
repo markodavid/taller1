@@ -1,6 +1,6 @@
 {
-  "timestamp": "2026-11-10T00:02:45+00:00",
-  "duracion_segundos": 18.31,
+  "timestamp": "2026-11-10T12:14:54+00:00",
+  "duracion_segundos": 49.67,
   "dataset": {
     "dataset": "Dry Bean",
     "uci_id": 602,
@@ -77,6 +77,39 @@
     "test": 2709,
     "test_size": 0.2,
     "random_state": 42
+  },
+  "eda": {
+    "variables_mas_discriminantes": [
+      {
+        "variable": "Area",
+        "eta_cuadrado": 0.9279
+      },
+      {
+        "variable": "ConvexArea",
+        "eta_cuadrado": 0.9277
+      },
+      {
+        "variable": "EquivDiameter",
+        "eta_cuadrado": 0.9187
+      }
+    ],
+    "pares_mas_correlacionados": [
+      {
+        "variable_1": "Area",
+        "variable_2": "ConvexArea",
+        "correlacion": 0.9999396020129335
+      },
+      {
+        "variable_1": "Compactness",
+        "variable_2": "ShapeFactor3",
+        "correlacion": 0.9986840922910339
+      },
+      {
+        "variable_1": "Perimeter",
+        "variable_2": "EquivDiameter",
+        "correlacion": 0.9914526639655251
+      }
+    ]
   },
   "metricas": [
     {

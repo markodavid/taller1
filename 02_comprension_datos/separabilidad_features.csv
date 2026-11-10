@@ -1,0 +1,17 @@
+variable,eta_cuadrado
+Area,0.9279
+ConvexArea,0.9277
+EquivDiameter,0.9187
+Perimeter,0.9151
+MinorAxisLength,0.9086
+MajorAxisLength,0.9056
+ShapeFactor2,0.844
+ShapeFactor1,0.8429
+AspectRatio,0.8189
+Compactness,0.8158
+ShapeFactor3,0.8119
+Eccentricity,0.7834
+Roundness,0.729
+ShapeFactor4,0.3589
+Solidity,0.2192
+Extent,0.1592
