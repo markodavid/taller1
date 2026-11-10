@@ -1,0 +1,49 @@
+{
+  "crudo": {
+    "n_registros": 13611,
+    "n_columnas": 17,
+    "n_features": 16,
+    "valores_nulos": 0,
+    "columnas_con_nulos": 0,
+    "filas_duplicadas": 68,
+    "columnas_no_numericas": [
+      "Class"
+    ],
+    "clases": [
+      "BARBUNYA",
+      "BOMBAY",
+      "CALI",
+      "DERMASON",
+      "HOROZ",
+      "SEKER",
+      "SIRA"
+    ]
+  },
+  "limpio": {
+    "n_registros": 13543,
+    "n_columnas": 17,
+    "n_features": 16,
+    "valores_nulos": 0,
+    "columnas_con_nulos": 0,
+    "filas_duplicadas": 0,
+    "columnas_no_numericas": [
+      "Class"
+    ],
+    "clases": [
+      "BARBUNYA",
+      "BOMBAY",
+      "CALI",
+      "DERMASON",
+      "HOROZ",
+      "SEKER",
+      "SIRA"
+    ]
+  },
+  "duplicados_eliminados": 68,
+  "particion": {
+    "train": 10834,
+    "test": 2709,
+    "test_size": 0.2,
+    "random_state": 42
+  }
+}

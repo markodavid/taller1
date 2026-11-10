@@ -1,0 +1,28 @@
+{
+  "dataset": "Dry Bean",
+  "uci_id": 602,
+  "fuente": "https://archive.ics.uci.edu/dataset/602/dry+bean+dataset",
+  "url_descarga": "https://archive.ics.uci.edu/static/public/602/data.csv",
+  "sha256": "c91a086bb4357e69409d23287ec22be1be9512145cead1d8ca988c918be38fcb",
+  "bytes": 2484757,
+  "filas": 13543,
+  "columnas": 17,
+  "clases": [
+    "BARBUNYA",
+    "BOMBAY",
+    "CALI",
+    "DERMASON",
+    "HOROZ",
+    "SEKER",
+    "SIRA"
+  ],
+  "distribucion_clases": {
+    "DERMASON": 3546,
+    "SIRA": 2636,
+    "SEKER": 2027,
+    "HOROZ": 1860,
+    "CALI": 1630,
+    "BARBUNYA": 1322,
+    "BOMBAY": 522
+  }
+}

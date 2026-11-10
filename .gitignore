@@ -1,0 +1,37 @@
+# Python-generated files
+__pycache__/
+*.py[oc]
+build/
+dist/
+wheels/
+*.egg-info/
+
+# Entornos virtuales
+.venv/
+venv/
+
+# Herramientas
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.ipynb_checkpoints/
+.coverage
+htmlcov/
+
+# Sistema operativo / editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Secretos y archivos temporales
+.env
+.env.*
+*.tmp
+
+# Artefactos pesados regenerables (se recrean con `make pipeline`)
+04_modelado/*.joblib
+
+# Material del curso (no forma parte del entregable)
+Lab1.pdf
+Plan_Equipos_ScrumML_DryBean.pdf

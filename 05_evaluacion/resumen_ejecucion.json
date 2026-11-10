@@ -1,0 +1,110 @@
+{
+  "timestamp": "2026-11-10T00:02:45+00:00",
+  "duracion_segundos": 18.31,
+  "dataset": {
+    "dataset": "Dry Bean",
+    "uci_id": 602,
+    "fuente": "https://archive.ics.uci.edu/dataset/602/dry+bean+dataset",
+    "url_descarga": "https://archive.ics.uci.edu/static/public/602/data.csv",
+    "sha256": "c91a086bb4357e69409d23287ec22be1be9512145cead1d8ca988c918be38fcb",
+    "bytes": 2484757,
+    "filas": 13543,
+    "columnas": 17,
+    "clases": [
+      "BARBUNYA",
+      "BOMBAY",
+      "CALI",
+      "DERMASON",
+      "HOROZ",
+      "SEKER",
+      "SIRA"
+    ],
+    "distribucion_clases": {
+      "DERMASON": 3546,
+      "SIRA": 2636,
+      "SEKER": 2027,
+      "HOROZ": 1860,
+      "CALI": 1630,
+      "BARBUNYA": 1322,
+      "BOMBAY": 522
+    }
+  },
+  "calidad_datos": {
+    "crudo": {
+      "n_registros": 13611,
+      "n_columnas": 17,
+      "n_features": 16,
+      "valores_nulos": 0,
+      "columnas_con_nulos": 0,
+      "filas_duplicadas": 68,
+      "columnas_no_numericas": [
+        "Class"
+      ],
+      "clases": [
+        "BARBUNYA",
+        "BOMBAY",
+        "CALI",
+        "DERMASON",
+        "HOROZ",
+        "SEKER",
+        "SIRA"
+      ]
+    },
+    "limpio": {
+      "n_registros": 13543,
+      "n_columnas": 17,
+      "n_features": 16,
+      "valores_nulos": 0,
+      "columnas_con_nulos": 0,
+      "filas_duplicadas": 0,
+      "columnas_no_numericas": [
+        "Class"
+      ],
+      "clases": [
+        "BARBUNYA",
+        "BOMBAY",
+        "CALI",
+        "DERMASON",
+        "HOROZ",
+        "SEKER",
+        "SIRA"
+      ]
+    }
+  },
+  "duplicados_eliminados": 68,
+  "particion": {
+    "train": 10834,
+    "test": 2709,
+    "test_size": 0.2,
+    "random_state": 42
+  },
+  "metricas": [
+    {
+      "modelo": "Random Forest",
+      "accuracy": 0.9195,
+      "f1_macro": 0.931,
+      "f1_weighted": 0.9195,
+      "precision_macro": 0.9312,
+      "recall_macro": 0.931
+    },
+    {
+      "modelo": "Logistic Regression",
+      "accuracy": 0.9195,
+      "f1_macro": 0.9306,
+      "f1_weighted": 0.9197,
+      "precision_macro": 0.9311,
+      "recall_macro": 0.9303
+    }
+  ],
+  "mejor_modelo": "Random Forest",
+  "verificacion_despliegue": {
+    "muestra_predicha": "SEKER",
+    "clase_real": "SEKER"
+  },
+  "entorno": {
+    "python": "3.13.2",
+    "pandas": "3.1.1",
+    "scikit_learn": "1.9.1",
+    "taller1": "0.1.0"
+  }
+}
